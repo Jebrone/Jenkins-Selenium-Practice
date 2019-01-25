@@ -9,6 +9,7 @@
     <description>A project to test out Maven structure for automation</description>
 
     <properties>
+        <selenium.version>3.12.0</selenium.version>
         <suiteXmlFile>testng.xml</suiteXmlFile>
     </properties>
 
@@ -19,6 +20,12 @@
             <artifactId>testng</artifactId>
             <version>6.14.3</version>
             <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
         </dependency>
     </dependencies>
 
