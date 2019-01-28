@@ -13,8 +13,18 @@ public class TC_Sample {
 
     @BeforeMethod
     public void setup_Driver() {
-        System.setProperty("webdriver.chrome.driver", Paths.get("").toAbsolutePath().toString() + "/src/test/resources/chromedriver");
-         driver = new ChromeDriver();
+        System.getProperties().list(System.out);
+        System.getProperty("os.name");
+        switch(System.getProperty("os.name")) {
+            case "Mac OS X":
+                System.setProperty("webdriver.chrome.driver", Paths.get("").toAbsolutePath().toString() + "/src/test/resources/chromedriver_mac64");
+                break;
+            case "Linux":
+            default:
+                System.setProperty("webdriver.chrome.driver", Paths.get("").toAbsolutePath().toString() + "/src/test/resources/chromedriver_linux64");
+                break;
+        }
+        driver = new ChromeDriver();
     }
 
     @AfterMethod
