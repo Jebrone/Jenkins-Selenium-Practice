@@ -24,7 +24,7 @@ public class TC_Sample {
             case "Linux":
                 String linuxDriver = driverPath + "chromedriver_linux64";
                 System.setProperty("webdriver.chrome.driver", linuxDriver);
-                Runtime.getRuntime().exec("chmod +x " + linuxDriver);
+                Runtime.getRuntime().exec("sudo chmod +x " + linuxDriver);
                 break;
             case "Windows":
             default:
