@@ -1,5 +1,6 @@
 package tests;
 
+import java.io.IOException;
 import java.nio.file.Paths;
 
 import org.openqa.selenium.WebDriver;
@@ -12,16 +13,23 @@ public class TC_Sample {
     WebDriver driver;
 
     @BeforeMethod
-    public void setup_Driver() {
+    public void setup_Driver() throws IOException {
         System.getProperties().list(System.out);
-        System.getProperty("os.name");
+        String driverPath = Paths.get("").toAbsolutePath().toString() + "/src/test/resources/";
         switch(System.getProperty("os.name")) {
             case "Mac OS X":
-                System.setProperty("webdriver.chrome.driver", Paths.get("").toAbsolutePath().toString() + "/src/test/resources/chromedriver_mac64");
+                String macDriver = driverPath + "chromedriver_mac64";
+                System.setProperty("webdriver.chrome.driver", macDriver);
                 break;
             case "Linux":
+                String linuxDriver = driverPath + "chromedriver_linux64";
+                System.setProperty("webdriver.chrome.driver", linuxDriver);
+                Runtime.getRuntime().exec("chmod +x " + linuxDriver);
+                break;
+            case "Windows":
             default:
-                System.setProperty("webdriver.chrome.driver", Paths.get("").toAbsolutePath().toString() + "/src/test/resources/chromedriver_linux64");
+                String windowsDriver = driverPath + "chromedriver_win32";
+                System.setProperty("webdriver.chrome.driver", windowsDriver);
                 break;
         }
         driver = new ChromeDriver();
