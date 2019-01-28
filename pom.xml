@@ -5,7 +5,7 @@
     <groupId>jenkins.maven</groupId>
     <artifactId>jenkins.maven.test</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Jenkins Maven Text Project</name>
+    <name>Jenkins Maven Test Project</name>
     <description>A project to test out Maven structure for automation</description>
 
     <properties>

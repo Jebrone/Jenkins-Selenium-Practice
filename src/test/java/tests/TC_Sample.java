@@ -1,5 +1,7 @@
 package tests;
 
+import java.nio.file.Paths;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -11,6 +13,7 @@ public class TC_Sample {
 
     @BeforeMethod
     public void setup_Driver() {
+        System.setProperty("webdriver.chrome.driver", Paths.get("").toAbsolutePath().toString() + "/src/test/resources/chromedriver");
          driver = new ChromeDriver();
     }
 
