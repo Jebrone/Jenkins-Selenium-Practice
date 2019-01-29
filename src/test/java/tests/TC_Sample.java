@@ -14,24 +14,32 @@ public class TC_Sample {
 
     @BeforeMethod
     public void setup_Driver() throws IOException {
+        System.out.println("===================== Setting Up Driver =====================");
         System.getProperties().list(System.out);
+        System.out.println("=====================");
+        
         String driverPath = Paths.get("").toAbsolutePath().toString() + "/src/test/resources/";
+        System.out.println("Driver Path: " + driverPath);
         switch(System.getProperty("os.name")) {
             case "Mac OS X":
+                System.out.println("Setting up Mac OS X Chrome Driver");
                 String macDriver = driverPath + "chromedriver_mac64";
                 System.setProperty("webdriver.chrome.driver", macDriver);
                 break;
             case "Linux":
+                System.out.println("Setting up Linux Chrome Driver");
                 String linuxDriver = driverPath + "chromedriver_linux64";
                 System.setProperty("webdriver.chrome.driver", linuxDriver);
-                Runtime.getRuntime().exec("sudo chmod +x " + linuxDriver);
+                Runtime.getRuntime().exec("chmod +x " + linuxDriver);
                 break;
             case "Windows":
             default:
+                System.out.println("Setting up Windows Chrome Driver");
                 String windowsDriver = driverPath + "chromedriver_win32";
                 System.setProperty("webdriver.chrome.driver", windowsDriver);
                 break;
         }
+        System.out.println("=====================");
         driver = new ChromeDriver();
     }
 
